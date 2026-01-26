@@ -82,6 +82,47 @@
 <footer>
     <p>© 2026 Deeptech Decode</p>
 </footer>
+///
+    <script>
+    let phoneNumbers = [];
 
+    function addNumber() {
+        const input = document.querySelector('.phone-input');
+        const number = input.value.trim();
+
+        if (number === "") {
+            alert("Please enter a mobile number");
+            return;
+        }
+
+        if (!/^\d{10}$/.test(number)) {
+            alert("Enter a valid 10-digit mobile number");
+            return;
+        }
+
+        phoneNumbers.push(number);
+
+        const list = document.getElementById("numberList");
+        const li = document.createElement("li");
+        li.textContent = number;
+        list.appendChild(li);
+
+        input.value = "";
+    }
+
+    function submitNumbers() {
+        if (phoneNumbers.length === 0) {
+            alert("No numbers added!");
+            return;
+        }
+
+        alert("Numbers submitted:\n" + phoneNumbers.join(", "));
+
+        // Later you can send this to backend / IoT device
+        console.log("Submitted numbers:", phoneNumbers);
+    }
+</script>
+
+///
 </body>
 </html>
