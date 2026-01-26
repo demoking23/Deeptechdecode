@@ -83,44 +83,34 @@
     <p>© 2026 Deeptech Decode</p>
 </footer>
 ///
-    <script>
-    let phoneNumbers = [];
+ <div class="project">
+    <h3>IoT Calling System</h3>
+    <p>Manage alert contacts for IoT-based emergency calling.</p>
 
-    function addNumber() {
-        const input = document.querySelector('.phone-input');
-        const number = input.value.trim();
+    <div class="iot-calling">
+        <div class="input-row">
+            <input type="text" id="name" placeholder="Name">
+            <input type="tel" id="mobile" placeholder="Mobile Number">
+            <input type="text" id="location" placeholder="Location">
+            <button onclick="addContact()">➕ Add</button>
+        </div>
 
-        if (number === "") {
-            alert("Please enter a mobile number");
-            return;
-        }
+        <table id="contactTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Location</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
 
-        if (!/^\d{10}$/.test(number)) {
-            alert("Enter a valid 10-digit mobile number");
-            return;
-        }
+        <button class="submit-btn" onclick="submitContacts()">Submit Contacts</button>
+    </div>
+</div>
 
-        phoneNumbers.push(number);
-
-        const list = document.getElementById("numberList");
-        const li = document.createElement("li");
-        li.textContent = number;
-        list.appendChild(li);
-
-        input.value = "";
-    }
-
-    function submitNumbers() {
-        if (phoneNumbers.length === 0) {
-            alert("No numbers added!");
-            return;
-        }
-
-        alert("Numbers submitted:\n" + phoneNumbers.join(", "));
-
-        // Later you can send this to backend / IoT device
-        console.log("Submitted numbers:", phoneNumbers);
-    }
 </script>
 
 ///
