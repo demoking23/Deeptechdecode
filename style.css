@@ -52,37 +52,39 @@ footer {
     margin-top: 30px;
 }
 .iot-calling {
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
-.phone-input {
+.input-row input {
     padding: 8px;
-    width: 200px;
     margin-right: 5px;
+    width: 160px;
 }
 
-.iot-calling button {
+.input-row button {
     padding: 8px 12px;
-    cursor: pointer;
 }
 
-#numberList {
+table {
+    width: 100%;
     margin-top: 10px;
-    list-style: none;
-    padding: 0;
+    border-collapse: collapse;
 }
 
-#numberList li {
-    background: #f0f0f0;
-    margin: 5px 0;
-    padding: 6px;
-    border-radius: 4px;
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f4f4f4;
 }
 
 .submit-btn {
     margin-top: 10px;
+    padding: 10px;
     background-color: #007bff;
     color: white;
     border: none;
 }
-
