@@ -56,35 +56,6 @@
     </div>
 <div class="project">
     <h3>IoT Calling System</h3>
-    <p>
-        Enter multiple mobile numbers for IoT-based alert calling system.
-    </p>
-
-    <div class="iot-calling">
-        <input type="tel" placeholder="Enter mobile number" class="phone-input">
-        <button onclick="addNumber()">➕ Add Number</button>
-
-        <ul id="numberList"></ul>
-
-        <button class="submit-btn" onclick="submitNumbers()">Submit Numbers</button>
-    </div>
-</div>
-
-    <!-- Add more projects here -->
-</section>
-
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Email: yourmail@example.com</p>
-    <p>GitHub: <a href="https://github.com/demoking23" target="_blank">demoking23</a></p>
-</section>
-
-<footer>
-    <p>© 2026 Deeptech Decode</p>
-</footer>
-///
- <div class="project">
-    <h3>IoT Calling System</h3>
     <p>Manage alert contacts for IoT-based emergency calling.</p>
 
     <div class="iot-calling">
@@ -111,6 +82,83 @@
     </div>
 </div>
 
+
+    <!-- Add more projects here -->
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <p>Email: yourmail@example.com</p>
+    <p>GitHub: <a href="https://github.com/demoking23" target="_blank">demoking23</a></p>
+</section>
+
+<footer>
+    <p>© 2026 Deeptech Decode</p>
+</footer>
+///
+<script>
+    let contacts = [];
+
+    function addContact() {
+        const name = document.getElementById("name").value.trim();
+        const mobile = document.getElementById("mobile").value.trim();
+        const location = document.getElementById("location").value.trim();
+
+        if (!name || !mobile || !location) {
+            alert("All fields are required");
+            return;
+        }
+
+        if (!/^\d{10}$/.test(mobile)) {
+            alert("Enter a valid 10-digit mobile number");
+            return;
+        }
+
+        const contact = { name, mobile, location };
+        contacts.push(contact);
+
+        renderTable();
+        clearInputs();
+    }
+
+    function removeContact(index) {
+        contacts.splice(index, 1);
+        renderTable();
+    }
+
+    function renderTable() {
+        const tbody = document.querySelector("#contactTable tbody");
+        tbody.innerHTML = "";
+
+        contacts.forEach((c, index) => {
+            tbody.innerHTML += `
+                <tr>
+                    <td>${c.name}</td>
+                    <td>${c.mobile}</td>
+                    <td>${c.location}</td>
+                    <td>
+                        <button onclick="removeContact(${index})">❌ Remove</button>
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    function clearInputs() {
+        document.getElementById("name").value = "";
+        document.getElementById("mobile").value = "";
+        document.getElementById("location").value = "";
+    }
+
+    function submitContacts() {
+        if (contacts.length === 0) {
+            alert("No contacts added");
+            return;
+        }
+
+        console.log("IoT Contact List:", JSON.stringify(contacts, null, 2));
+        alert("Contacts submitted successfully!");
+    }
 </script>
 
 ///
